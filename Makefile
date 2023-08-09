@@ -27,6 +27,9 @@ build: ## Builds the Docker images
 up: ## Start the docker hub in detached mode (no logs)
 	@$(DOCKER_COMP) up --detach
 
+ps: ## Show containers
+	@$(DOCKER_COMP) ps
+
 start: build database-up up ## Build and start the containers
 
 down: ## Stop the docker hub

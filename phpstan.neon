@@ -1,0 +1,7 @@
+parameters:
+    level: 5
+    paths:
+        - src
+    inferPrivatePropertyTypeFromConstructor: true
+    # suppress phpstan 0.12 extra checks
+    checkGenericClassInNonGenericObjectType: false

@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 class User
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue(strategy: "NONE")]
+    #[ORM\GeneratedValue(strategy: 'NONE')]
     #[ORM\Column(length: 13)]
     public readonly string $id;
 

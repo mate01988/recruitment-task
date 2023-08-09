@@ -9,7 +9,7 @@ class DemoTest extends TestCase
 {
     public function testFramework()
     {
-        $meeting = new Meeting('Some Meeting', new \DateTimeImmutable('now'));
+        $meeting = new Meeting('Some Meeting', new \DateTimeImmutable('now'), 5);
         $this->assertInstanceOf(Meeting::class, $meeting);
     }
 }

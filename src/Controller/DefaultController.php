@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\Repository\MeetingRepository;
@@ -20,6 +22,7 @@ final class DefaultController
     public function meeting(string $meetingId): Response
     {
         $meeting = $this->meetingRepository->get($meetingId);
+
         return new JsonResponse($meeting);
     }
 

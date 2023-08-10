@@ -7,6 +7,16 @@ use App\Meeting\Domain\Entity\MeetingStatus;
 use App\Meeting\Domain\Factory\MeetingFactory;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ *
+ * @covers \App\Meeting\Domain\Factory\MeetingFactory
+ *
+ * @runTestsInSeparateProcesses
+ *
+ * @group unit
+ * @group MeetingFactory
+ */
 class MeetingFactoryTest extends TestCase
 {
     public function testCreateObject()

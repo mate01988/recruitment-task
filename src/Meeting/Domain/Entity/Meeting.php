@@ -2,6 +2,7 @@
 
 namespace App\Meeting\Domain\Entity;
 
+use App\Shared\Domain\Exception\AlreadyExistsException;
 use App\Shared\Domain\Exception\LimitParticipantsException;
 use App\User\Domain\Entity\User;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -16,19 +17,22 @@ class Meeting
     #[ORM\Id]
     #[ORM\GeneratedValue(strategy: 'NONE')]
     #[ORM\Column]
-    public readonly string $id;
+    private readonly string $id;
 
     #[ORM\Column(length: 255)]
-    public readonly string $name;
+    private readonly string $name;
 
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
-    public readonly \DateTimeImmutable $startTime;
+    private readonly \DateTimeImmutable $startTime;
 
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
-    public readonly \DateTimeImmutable $endTime;
+    private readonly \DateTimeImmutable $endTime;
 
-    #[ORM\ManyToMany(targetEntity: User::class)]
-    public Collection $participants;
+    /**
+     * @var Collection&iterable<MeetingUser>
+     */
+    #[ORM\OneToMany(mappedBy: 'meeting', targetEntity: MeetingUser::class, cascade: ['persist'])]
+    private Collection $participants;
 
     public readonly int $maxUsers;
 
@@ -44,14 +48,19 @@ class Meeting
 
     /**
      * @throws LimitParticipantsException
+     * @throws AlreadyExistsException
      */
-    public function addAParticipant(User $participant): void
+    public function addAParticipant(User $user): void
     {
         if ($this->getParticipants()->count() >= $this->maxUsers) {
             throw new LimitParticipantsException();
         }
 
-        $this->participants->add($participant);
+        // if ($this->participants->contains($participant)) {
+        //   throw new AlreadyExistsException();
+        // }
+
+        $this->participants->add(new MeetingUser($this, $user));
     }
 
     public function getId(): string

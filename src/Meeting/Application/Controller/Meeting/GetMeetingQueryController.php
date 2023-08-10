@@ -25,12 +25,15 @@ final class GetMeetingQueryController extends AbstractController
 
     public function __invoke(string $id): JsonResponse
     {
+        $meetingResponse = '{}';
         try {
-            $meeting = $this->handle(new FindMeetingQuery($id));
-        } catch (ResourceNotFoundException $exception) {
-            return JsonResponse::fromJsonString('{}', Response::HTTP_NOT_FOUND);
+            $meetingResponse = $this->handle(new FindMeetingQuery($id));
+        } catch (\Throwable $throwable) {
+            if ($throwable->getPrevious() instanceof ResourceNotFoundException) {
+                return JsonResponse::fromJsonString($meetingResponse, Response::HTTP_NOT_FOUND);
+            }
         }
 
-        return JsonResponse::fromJsonString($meeting);
+        return JsonResponse::fromJsonString($meetingResponse);
     }
 }

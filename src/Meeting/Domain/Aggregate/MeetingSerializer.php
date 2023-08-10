@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace App\Meeting\Domain\Aggregate;
 
 use App\Meeting\Domain\Entity\Meeting;
+use App\Meeting\Domain\Entity\MeetingUser;
 use App\Meeting\Domain\ValueObject\MeetingOutputDTO;
 use App\User\Domain\Aggregate\UserSerializer;
-use App\User\Domain\Entity\User;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 final class MeetingSerializer
@@ -31,8 +31,8 @@ final class MeetingSerializer
             sprintf(self::STATUS_TRANSLATE_PREFIX, $meeting->getStatus()->name)
         );
 
-        $meetingOutputDTO->users = array_map(function (User $user) {
-            return $this->userSerializer->fromEntity($user);
+        $meetingOutputDTO->users = array_map(function (MeetingUser $meetingUser) {
+            return $this->userSerializer->fromEntity($meetingUser->getUser());
         }, $meeting->getParticipants()->toArray());
 
         return $meetingOutputDTO;

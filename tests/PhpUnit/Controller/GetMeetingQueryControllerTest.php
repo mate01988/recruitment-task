@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\PhpUnit\Controller;
 
 use App\Meeting\Domain\Aggregate\MeetingSerializer;
-use App\Meeting\Infrastructure\Repository\MeetingRepository;
+use App\Meeting\Infrastructure\Repository\MeetingQueryRepository;
 use App\Shared\Domain\DataFixtures\MeetingFixtures;
 use Liip\TestFixturesBundle\Services\DatabaseToolCollection;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
@@ -39,8 +39,8 @@ final class GetMeetingQueryControllerTest extends WebTestCase
 
     public function testGetMeetingQuery(): void
     {
-        /** @var $meetingRepository MeetingRepository */
-        $meetingRepository = self::getContainer()->get(MeetingRepository::class);
+        /** @var $meetingRepository MeetingQueryRepository */
+        $meetingRepository = self::getContainer()->get(MeetingQueryRepository::class);
 
         /** @var MeetingSerializer $meetingSerializer */
         $meetingSerializer = self::getContainer()->get(MeetingSerializer::class);

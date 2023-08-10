@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Tests\Entity;
+namespace App\Tests\PhpUnit\Factory;
 
-use App\Entity\Meeting;
-use App\Entity\MeetingStatus;
-use App\Factory\MeetingFactory;
+use App\Meeting\Domain\Entity\Meeting;
+use App\Meeting\Domain\Entity\MeetingStatus;
+use App\Meeting\Domain\Factory\MeetingFactory;
 use PHPUnit\Framework\TestCase;
 
 class MeetingFactoryTest extends TestCase

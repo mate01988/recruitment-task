@@ -1,0 +1,4 @@
+meeting_status_Open: "open to registration"
+meeting_status_Full: "full"
+meeting_status_InSession: "in session"
+meeting_status_Done: "done"

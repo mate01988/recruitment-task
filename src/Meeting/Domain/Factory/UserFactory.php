@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Factory;
+namespace App\Meeting\Domain\Factory;
 
-use App\Entity\User;
+use App\User\Domain\Entity\User;
 
 class UserFactory
 {

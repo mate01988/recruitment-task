@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entity;
+namespace App\Meeting\Domain\Entity;
 
 enum MeetingStatus: string
 {

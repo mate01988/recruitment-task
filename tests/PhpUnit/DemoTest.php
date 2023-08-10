@@ -2,7 +2,7 @@
 
 namespace App\Tests\PhpUnit;
 
-use App\Entity\Meeting;
+use App\Meeting\Domain\Entity\Meeting;
 use PHPUnit\Framework\TestCase;
 
 class DemoTest extends TestCase

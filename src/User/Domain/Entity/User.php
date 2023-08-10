@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entity;
+namespace App\User\Domain\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -20,5 +20,15 @@ class User
     {
         $this->id = uniqid();
         $this->name = $name;
+    }
+
+    public function getId(): string
+    {
+        return $this->id;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
     }
 }

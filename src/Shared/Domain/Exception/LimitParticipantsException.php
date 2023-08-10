@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Exception;
+namespace App\Shared\Domain\Exception;
 
 final class LimitParticipantsException extends \Exception
 {

@@ -1,13 +1,13 @@
 <?php
 
-namespace App\DataFixtures;
+namespace App\Shared\Domain\DataFixtures;
 
-use App\Entity\Meeting;
-use App\Entity\User;
+use App\Meeting\Domain\Entity\Meeting;
+use App\User\Domain\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
-class AppFixtures extends Fixture
+class MeetingFixtures extends Fixture
 {
     private int $maximumNumberOfParticipants;
 

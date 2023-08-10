@@ -1,3 +1,8 @@
-controllers:
-    resource: ../src/Controller/
+apiControllersMeeting:
+    resource: ../src/Meeting/Application/Controller
+    type: attribute
+    prefix: /api
+
+webControllersMeeting:
+    resource: ../src/Shared/Application/Controller
     type: attribute

@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Entity;
+namespace App\Meeting\Domain\Entity;
 
-use App\Exception\LimitParticipantsException;
+use App\Shared\Domain\Exception\LimitParticipantsException;
+use App\User\Domain\Entity\User;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -26,7 +28,7 @@ class Meeting
     public readonly \DateTimeImmutable $endTime;
 
     #[ORM\ManyToMany(targetEntity: User::class)]
-    public ArrayCollection $participants;
+    public Collection $participants;
 
     public readonly int $maxUsers;
 
@@ -45,7 +47,7 @@ class Meeting
      */
     public function addAParticipant(User $participant): void
     {
-        if ($this->participants->count() >= $this->maxUsers) {
+        if ($this->getParticipants()->count() >= $this->maxUsers) {
             throw new LimitParticipantsException();
         }
 
@@ -80,7 +82,7 @@ class Meeting
         return MeetingStatus::Open;
     }
 
-    public function getParticipants(): ArrayCollection
+    public function getParticipants(): Collection
     {
         return $this->participants;
     }

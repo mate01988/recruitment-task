@@ -10,17 +10,22 @@ doctrine:
         naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
         auto_mapping: true
         mappings:
-            App:
+            Meeting:
                 is_bundle: false
-                dir: '%kernel.project_dir%/src/Entity'
-                prefix: 'App\Entity'
-                alias: App
+                dir: '%kernel.project_dir%/src/Meeting/Domain/Entity'
+                prefix: 'App\Meeting\Domain\Entity'
+                alias: Meeting
+            User:
+                is_bundle: false
+                dir: '%kernel.project_dir%/src/User/Domain/Entity'
+                prefix: 'App\User\Domain\Entity'
+                alias: User
 
 when@test:
     doctrine:
         dbal:
             # "TEST_TOKEN" is typically set by ParaTest
-            dbname_suffix: '_test%env(default::TEST_TOKEN)%'
+            #dbname_suffix: '%env(default::TEST_TOKEN)%'
 
 when@prod:
     doctrine:

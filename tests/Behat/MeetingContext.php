@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Tests\Behat;
 
-use App\Entity\Meeting;
-use App\Entity\MeetingStatus;
-use App\Exception\LimitParticipantsException;
-use App\Factory\MeetingFactory;
-use App\Factory\UserFactory;
+use App\Meeting\Domain\Entity\Meeting;
+use App\Meeting\Domain\Entity\MeetingStatus;
+use App\Meeting\Domain\Factory\MeetingFactory;
+use App\Meeting\Domain\Factory\UserFactory;
+use App\Shared\Domain\Exception\LimitParticipantsException;
 use Behat\Behat\Context\Context;
 use Symfony\Component\HttpKernel\KernelInterface;
 
